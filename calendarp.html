@@ -1,0 +1,183 @@
+<!-- Page for the dynamic table NOTHING TO DO HERE -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd" >
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="Content-Type">
+    <title>Home</title>
+	<style type="text/css">
+#current_day { background-color:lightblue; font-weight: bold; }
+div.container {
+    width: 100%;
+    border: 1px solid gray;
+}
+header, footer {
+    padding: 1em;
+    color: white;
+    background-color: black;
+    clear: left;
+    text-align: center;
+}
+nav {
+    float: left;
+    max-width: 160px;
+    margin: 0;
+    padding: 1em;
+}
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+nav ul a {
+    text-decoration: none;
+}
+article {
+    margin-left: 170px;
+    border-left: 1px solid gray;
+    padding: 1em;
+    overflow: hidden;
+}
+a :button nextMonth {
+	text-align: center;
+}
+</style>
+<script type="text/javascript" src="table.js"></script>
+</head>
+
+<body>
+    <h1>Welcome to your personal life organizer</h1>
+    <p> Start mapping your life??...</p>
+
+    <!-- This is where the table should hook to the DOM -->
+    <div id="parent"></div>
+
+    <!-- This is pure js, put scripts last so that DOM is constructed -->
+    <script type="text/javascript" src="table.js"></script>
+<div class="container">
+
+<header>
+   <h1> Calendar </h1>
+</header>
+
+<nav>
+  <ul>
+    <li><a href="#">Menu</a></li>
+    <li><a href="#">Lists</a></li>
+    <li><a href="#">Categories</a></li>
+	<li><a href="#">Inspiration</a></li>
+	<li><a href="#">Settings</a></li>
+	<li><a href="#">Log out</a></li>
+  </ul>
+</nav>
+
+<article>
+  <h1 style="text-align: center">January</h1>
+  <div>
+  <a align="left" href="#" class="button" id="lastMonth" >Back</a>
+  <a align="right" href="#" class="button" id="nextMonth" >Next</a>
+  </div>
+
+ <div class="navigation">
+
+            </div>
+
+    <br><br>
+
+    <table class="days">
+                <tr>
+                    <th>Monday</th>
+                    <th>Tuesday</th>
+                    <th>Wednesday</th>
+                    <th>Thursday</th>
+                    <th>Friday</th>
+                    <th>Thursday</th>
+                    <th>Sunday</th>
+                </tr>
+                    <tr>
+                        <td class="grayedout" data-href="#">28</td>
+                        <td class="grayedout" data-href="#">29</td>
+                        <td class="grayedout" data-href="#">30</td>
+                        <td class="dato" data-href="#">1</td>
+                        <td class="dato" data-href="#">2</td>
+                        <td class="dato" data-href="#">3</td>
+                        <td class="dato" data-href="#">4</td>
+
+                    </tr>
+                    <tr>
+                        <td class="dato" data-href="#">5</td>
+                        <td class="dato" data-href="#">6</td>
+                        <td class="dato" data-href="#">7</td>
+                        <td class="dato" data-href="#">8</td>
+                        <td class="dato" data-href="#">9</td>
+                        <td class="dato" data-href="#">10</td>
+                        <td class="dato" data-href="#">11</td>
+                    </tr>
+                    <tr>
+                        <td class="dato" data-href="#">12</td>
+                        <td class="dato" data-href="#">13</td>
+                        <td class="dato" data-href="#">14</td>
+                        <td class="dato" data-href="#">15</td>
+                        <td class="dato" data-href="#">16</td>
+                        <td class="dato" data-href="#">17</td>
+                        <td class="dato" data-href="#">18</td>
+                    </tr>
+                    <tr>
+                        <td class="dato" data-href="#">19</td>
+                        <td class="dato" data-href="#">20</td>
+                        <td class="dato" data-href="#">21</td>
+                        <td class="dato" data-href="#">22</td>
+                        <td class="dato" data-href="#">23</td>
+                        <td class="dato" data-href="#">24</td>
+                        <td class="dato" data-href="#">25</td>
+                    </tr>
+                    <tr>
+                        <td class="dato" data-href="#">26</td>
+                        <td class="dato" data-href="#">27</td>
+                        <td class="dato" data-href="#">28</td>
+                        <td class="dato" data-href="#">29</td>
+                        <td class="dato" data-href="#">30</td>
+                        <td class="dato" data-href="#">31</td>
+                        <td class="grayedout" data-href="#">1</td>
+                    </tr>
+                    <tr>
+                        <td class="grayedout" data-href="#">2</td>
+                        <td class="grayedout" data-href="#">3</td>
+                        <td class="grayedout" data-href="#">4</td>
+                        <td class="grayedout" data-href="#">5</td>
+                        <td class="grayedout" data-href="#">6</td>
+                        <td class="grayedout" data-href="#">7</td>
+                        <td class="grayedout" data-href="#">8</td>
+                    </tr>
+
+            </table>
+
+<div>
+<script type="text/javascript" src="calendar.js"></script>
+<p>&nbsp </p>
+<div id="show_calendar">&nbsp;</div>
+<div id="current_month">&nbsp;</div>
+</div>
+
+
+</article>
+</style>
+</div>
+<!--<script src="js/daypilot-all.min.js" type="text/javascript"></script>-->
+<link type="text/css" rel="stylesheet" href="themes/month_white.css" />
+<script type="text/javascript">
+    function count_rows()
+    {
+        var rows = $('table#members_table tbody tr:visible').length;
+        $('#num_members').html(rows);
+    }
+
+    $(document).ready(function(){
+        count_rows();
+        $('input#members_search').quicksearch('table#members_table tbody tr', { 'onAfter' : count_rows });
+        $("table#members_table").tablesorter();
+    });
+</script>
+</body>
+</html>
