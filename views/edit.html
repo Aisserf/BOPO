@@ -6,7 +6,7 @@
 <body>
 	{{ >partials/header}}
 	<p> Edit {{ note.id}}</p>
-	<form action="/todo/list/edit" method="post">
+	<form action="/home/checklist/edit" method="post">
 		<table>
 			{{#note}}
 			<tr>
@@ -24,7 +24,7 @@
 			{{/note}}
 		</table>
 	</form>
-	<a href="/todo/list" )> Cancel</a>
+	<a href="/home/checklist" )> Cancel</a>
 	<p>{{ >partials/footer }}</p>
 </body>
 

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<HTML>
+
+  {{ >partials/head }}
+
+  <body>
+  	{{ >partials/header}}
+  	<p> {{ text }} </p>
+  	<table>
+  		{{#homechecklist}}
+  		<tr>
+  			<td><a href="/home/checklist?id={{id}}" /> {{ id }}</td>
+  			<td>{{ text }}</td>
+  			<td>{{ dateTime }}</td>
+  			<td>{{ done }}</td>
+  			<td><a href="/home/checklist/edit?id={{id}}" />Edit</td>
+  			<td><a href="/home/checklist/delete?id={{id}}" />Delete</td>
+  		</tr>
+  		{{/homechecklist}}
+  	</table>
+  	<a href="/home/checklist/add"> New note </a> {{ >partials/footer }}
+  </body>
+
+</HTML>

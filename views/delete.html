@@ -6,7 +6,7 @@
 <body>
 	{{ >partials/header}}
 	<p> Delete {{ note.id}}</p>
-	<form action="/todo/list/delete" method="post">
+	<form action="/home/checklist/delete" method="post">
 		<input type="hidden" name="id" value="{{note.id}}" />
 		<table>
 			{{#note}}
@@ -25,7 +25,7 @@
 			{{/note}}
 		</table>
 	</form>
-	<a href="/todo/list" )> Cancel</a>
+	<a href="/home/checklist" )> Cancel</a>
 	<p>{{ >partials/footer }}</p>
 </body>
 
