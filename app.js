@@ -16,7 +16,7 @@ var methodOverride = require('method-override')
 var mustacheExpress = require('mustache-express');
 
 var index = require('./routes/index');
-var todo = require('./routes/home'); //todo
+var home = require('./routes/home'); //todo
 
 var app = express();
 var db = require('./db/home_db_orm.js');
@@ -62,7 +62,7 @@ app.listen(3000, function() {
 
 // The routes and routers
 app.use('/', index);
-app.use('/home', todo);
+app.use('/home', home);
 
 // Catch 404 and forward to error handler
 app.use(function(err, req, res, next) {
