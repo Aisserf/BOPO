@@ -1,10 +1,10 @@
 <?php
 
-$host = "127.0.0.1";
+$host = "localhost;
 $user = "root";
-$pass = "pwd";
+$pass = "Root";
 
-$databaseName = "BOPO";
+$databaseName = "bopo";
 $tableName = "members";
 
 //--------------------------------------------------------------------------

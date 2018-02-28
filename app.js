@@ -27,7 +27,7 @@ con.query('SELECT * FROM members', (err,rows) => {
   console.log(`${row.name} is in ${row.location}`);
   });
 });
-const member = { name: 'Winnie', id: '888', email: 'winnie@gmail.com'};
+const member = { Name: 'Winnie', ID: '888', Mail: 'winnie@gmail.com', UserName: 'winnieB'};
 con.query('INSERT INTO members SET ?', member, (err, res) => {
   if(err) throw err;
 
