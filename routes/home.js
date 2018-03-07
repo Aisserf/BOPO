@@ -18,7 +18,7 @@ var userRegistry = require('../models/userregistry.js');
 router.use("/checklist", checklist);
 
 router.get('/', function(req, res, next) {
-    res.render('home', {text: 'Your BOPO list on the Web'});
+    res.render('home', {text: 'Your BOPO on the Web'});
 });
 
 /*

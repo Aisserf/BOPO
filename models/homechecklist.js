@@ -4,15 +4,58 @@
 	NOTE: Much easier to test if using objects (not module variables)
 */
 var HomeNote = require('./homenote.js');
+var sequelize = require('../db/home_db_orm.js');
 
+module.exports = {
+  register: function(note) {
+    console.log("About to add: " + note);
+    var n = this.lookup(note);
+    if (!n) {
+
+      console.log("Adding note");
+      sequelize.sync()
+        .then(() => console.log("Synchronised to database"))
+        .then(() => HomeNote.create(note))
+        .then(res => {
+          console.log(res.toJSON());
+        });
+
+        console.log("Added note");
+        return true;
+        
+      }else{
+        return false;
+      }
+    },
+    lookup: function(note) {
+      var result = notes.filter(function(index) {
+        return index.equals(note);
+      });
+      if(result.length === 1) {
+        return result[0];
+      } else {
+        return null;
+      }
+    },
+    size: function() {
+      return notes.length;
+    }
+
+};
+
+//xxxxxxxxx
+
+/*
 // Constructor
 function HomeChecklist() {
     this.notes = [
-        new HomeNote(1, 'Äta gröt', "", null),
-        new HomeNote(2, 'Rensa sallad', "", null),
-        new HomeNote(3, 'Jaga älg', "", null)
+        new HomeNote(1, 'Äta gröt', null),
+        new HomeNote(2, 'Rensa sallad', null),
+        new HomeNote(3, 'Jaga älg', null)
     ];
 };
+
+//module.exports = HomeChecklist;
 
 // public (a singleton)
 HomeChecklist.prototype = (function() {
@@ -50,7 +93,7 @@ HomeChecklist.prototype = (function() {
             var old = this.delete(note.id);
             if (old) {
                 //note.id = old.id;
-                note.dateTime = old.dateTime;
+                //note.dateTime = old.dateTime;
                 this.add(note);
             }
         },
@@ -66,5 +109,4 @@ HomeChecklist.prototype = (function() {
         }
     }
 })();
-
-module.exports = HomeChecklist;
+*/

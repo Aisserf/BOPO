@@ -12,65 +12,78 @@ var express = require('express');
 var HomeNote = require('../models/homenote.js');
 var HomeChecklist = require('../models/homechecklist.js');
 
-var homechecklist = new HomeChecklist();
 var router = express.Router();
 
 // List notes for current user
 router.get('/', function(req, res, next) {
-    console.log("GET checklist " + req.query.id);
-    if (req.query.id) {
-        res.render('details', {
-            note: todolist.getById(parseInt(req.query.id))
-        });
-    } else {
+
+    HomeNote.findAll().then(function(notes) {
+        //console.log(notes);
         res.render('checklist', {
-            title: 'Checklist', //JSON.stringify(list.getNotes()),
-            todolist: todolist.getNotes()
+            title: 'Checklist',
+            homechecklist: notes
         });
-    }
+    });
+});
+
+router.post('/add', function(req, res, next) {
+  console.log("a gudfvbfishnfm: " + req.body.text);
+    HomeNote.build({
+        text: req.body.text,
+        done: false
+    }).save().then(function() {
+        res.redirect("/home/checklist");
+    }).catch(function(error) {
+        console.log(error);
+    })
 });
 
 router.get('/add', function(req, res, next) {
-    console.log("Get add");
-    res.render('add');
+  //console.log("About to add: " + req.body);
+    res.render('add', {title: 'Add'});
 });
-/*
-// Ok, works here
-router.post('/add', function(req, res, next) {
-    console.log("Post add" + req.body.text);
-    todolist.add(new TodoNote(null, req.body.text));
-    res.redirect("/todo/list");
-});*/
 
 router.get('/delete', function(req, res, next) {
     console.log("Get delete");
-    console.log(homechecklist.getById(parseInt(req.query.id)));
-    res.render('delete', {
-        title: 'Delete Note',
-        note: todolist.getById(parseInt(req.query.id))
+    console.log("Hje " + req.query.id);
+    HomeNote.findById(req.query.id).then(function(note) {
+        res.render('delete', {
+            text: 'Delete Note',
+            note: note
+        });
     });
 });
 
 router.post('/delete', function(req, res, next) {
-    console.log("Post delete " + req.body.id);
-    todolist.delete(parseInt(req.body.id));
-    res.redirect("/home/checklist");
-});
-
-router.get('/edit', function(req, res, next) {
-    console.log("Get edit");
-    //console.log(todolist.getById(parseInt(req.params.id)));
-    res.render('edit', {
-        title: 'Edit Note',
-        note: homechecklist.getById(parseInt(req.query.id))
+    console.log("Get delete ID: " + req.body.id);
+    HomeNote.findById(req.body.id).then(function(note) {
+        return note.destroy();
+    }).then(function() {
+        res.redirect("/home/checklist");
     });
 });
 
+
+router.get('/edit', function(req, res, next) {
+    console.log("Get edit");
+    console.log("ID: " + req.query.id);
+    HomeNote.findById(req.query.id).then(function(note) {
+    res.render('edit', {
+        text: 'Edit Note',
+        note: note
+      });
+    });
+});
+
+
 router.post('/edit', function(req, res, next) {
-    console.log("Post edit " + req.body.id);
-    var note = new TodoNote(parseInt(req.body.id), req.body.text);
-    homechecklist.update(note);
-    res.redirect("/home/checklist");
+    console.log("Post edit: " + req.body.id);
+    console.log("This is the edit: " + req.body.text);
+    HomeNote.findById(req.body.id).then(function(note) {
+      return note.updateAttributes({text: req.body.text});
+    }).then(function() {
+      res.redirect("/home/checklist");
+    });
 });
 
 module.exports = router;

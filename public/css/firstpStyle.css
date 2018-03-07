@@ -82,8 +82,16 @@ fieldset {
   opacity: 0.70;
 	padding: 20px;
 	clear: both;
+  color: black;
+  font-size: 16px;
+}
 
-
+#content a:link {color: #ff8396;}
+#content a:visited {color: #ff8396;}
+#content a:hover {color: #ff8396;}
+#content a:active {color: #ff8396;}
+#content button {
+  opacity: 10;
 }
 
 .button {
@@ -104,6 +112,14 @@ button:hover{
   box-shadow: 0px 1px 1px #666;
 }
 button:active{ background-color: #add8e6; }
+
+table {
+    width: 75%;
+}
+
+th {
+    height: 50px;
+}
 
 
 #footer{

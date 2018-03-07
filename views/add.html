@@ -1,23 +1,43 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html>
-
-{{ >partials/head }}
-
 <body>
-	{{ >partials/header}}
-	<p> Add</p>
-	<form action="/home/checklist/add" method="post">
-		<table>
-			<tr>
-				<td><input type="text" name="text" /></td>
-			</tr>
-			<tr>
-				<td><input type="submit" name="add" value="Add" /></td>
-			</tr>
-		</table>
-	</form>
-	<a href="/home/checklist" )> Cancel</a>
-	<p>{{ >partials/footer }}</p>
-</body>
+<!-- webpage content goes here in the body -->
+<link rel="stylesheet" href="/public/css/firstpStyle.css" type="text/css" />
 
+<button class="button">Help</button>
+<button class="button"><a href="/home/">Home</a></button>
+<button class="button"><a href="/home/register">Register</a></button>
+<button class="button"><a href="/home/checklist">Checklist</a></button>
+
+{{ >partials/header}}
+<p> Add</p>
+
+	<div id="page">
+		<div id="logo" style="text-align: center">
+
+			<h1>Checklist for xxxx</h1>
+		</div>
+		<div id="nav"> </div>
+
+		<div id="content">
+			<p>
+				<form action="/home/checklist/add" method="post">
+					<table>
+						<tr>
+							<td><input type="text" name="text" /></td>
+						</tr>
+						<tr>
+							<td><input type="submit" name="add" value="Add" /></td>
+						</tr>
+					</table>
+				</form>
+				<button class="button"><a href="/home/checklist")> Cancel</a></button>
+			<p>
+				{{ >partials/footer }}
+			</p>
+		 </p>
+		</div>
+	</div>
+
+</body>
 </html>
