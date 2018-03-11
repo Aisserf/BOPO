@@ -1,2 +1,0 @@
-# BOPO
-web application project 
