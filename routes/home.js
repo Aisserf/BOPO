@@ -8,17 +8,17 @@
 
 var express = require('express');
 var router = express.Router();
-//var todolist = require('../models/todolist.js');
-//var TodoNote = require('../models/todonote.js');
-//var list = require('./list.js');
+var homechecklist = require('../models/homechecklist.js');
+var HomeNote = require('../models/homenote.js');
+var checklist = require('./checklist.js');
 var userModule = require('../models/user.js');
 var userRegistry = require('../models/userregistry.js');
 
 // Hierarcical routing
-//router.use("/list", list);
+router.use("/checklist", checklist);
 
 router.get('/', function(req, res, next) {
-    res.render('home', {text: 'Your BOPO list on the Web'});
+    res.render('home', {text: 'Your BOPO on the Web'});
 });
 
 /*

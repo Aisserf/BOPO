@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+{{ >partials/head }}
+
+<body>
+	{{ >partials/header}}
+	<p> Details for {{ note.id}}</p>
+	<table>
+		{{#note}}
+		<tr>
+			<td>{{ note.id}}</td>
+		</tr>
+		<tr>
+			<td>{{ note.text}}</td>
+		</tr>
+		<tr>
+			<td>{{ note.done}}</td>
+		</tr>
+		{{/note}}
+	</table>
+	<a href="/home/checklist" )> Back</a>
+	<p>{{ >partials/footer }}</p>
+</body>
+
+</html>

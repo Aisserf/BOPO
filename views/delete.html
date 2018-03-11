@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html>
+{{ >partials/head }}
+
+<body>
+<!-- webpage content goes here in the body -->
+<link rel="stylesheet" href="/public/css/firstpStyle.css" type="text/css" />
+
+<button class="button">Help</button>
+<button class="button"><a href="/home/">Home</a></button>
+<button class="button"><a href="/home/register">Register</a></button>
+<button class="button"><a href="/home/checklist">Checklist</a></button>
+
+	{{ >partials/head }}
+	<p> Delete {{ note.id}}</p>
+
+	<div id="page">
+		<div id="logo" style="text-align: center">
+
+			<h1>Checklist for xxxx</h1>
+		</div>
+		<div id="nav"> </div>
+
+		<div id="content">
+			<p>
+				<form action="/home/checklist/delete" method="post">
+					<input type="hidden" name="id" value="{{note.id}}" />
+					<table>
+						{{#note}}
+						<tr>
+							<td>{{ note.id}} </td>
+						</tr>
+						<tr>
+							<td>{{ note.text}}</td>
+						</tr>
+						<tr>
+							<td><input type="submit" name="delete" value="Delete" /></td>
+						</tr>
+						{{/note}}
+					</table>
+				</form>
+				<button class="button"><a href="/home/checklist")> Cancel</a></button>
+			<p>
+				{{ >partials/footer }}
+			</p>
+		 </p>
+		</div>
+	</div>
+
+</body>
+</html>
+
+<!--
+extend layout
+
+block content
+	h1= title
+	p= note.id
+	p= note.dateTime
+	p= note.text
+	p
+		form( action="/todo/list/delete" method="post")
+			input(type="hidden", name="id" value= note.id)
+			input(type="submit", name="delete" value="Delete")
+	p
+		a(href="/todo/list") Cancel
+		-->
